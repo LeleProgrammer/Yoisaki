@@ -7,7 +7,7 @@ node_modules/
 Thumbs.db
 *.part
 *.part.json
-assets/offline/download-manifest.json
-assets/offline/download-manifest.json.tmp
+
+# Downloaded media stays on this computer; keep only the directory guide.
 /assets/offline/*
 !/assets/offline/README.md

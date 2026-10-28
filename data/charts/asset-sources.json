@@ -80,6 +80,16 @@
       "size": 27346,
       "cors": "*",
       "type": "image/webp"
+    },
+    {
+      "kind": "art",
+      "file": "assets/samples/res017_no032_card_after_training.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/character/member/res017_no032/card_after_training.webp",
+      "size": 4419720,
+      "type": "image/webp",
+      "fetchedAt": "2026-10-28",
+      "sha256": "230a74d912972685b84838c1313e3d25964f9c432eada81e01a48302ceca12de",
+      "usage": "Homepage Kanade hero: card #833, trained artwork; original file, no raster transformation"
     }
   ]
 }

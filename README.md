@@ -62,6 +62,25 @@ GitHub Description 建议：
 
 不需要设置 API Key、账号密码、环境变量或后端服务。图片与媒体使用相对本地路径或 HTTPS 国服镜像地址，支持 GitHub Pages 的项目子路径。
 
+### 提交 Git 时跳过离线下载资源
+
+项目的 `.gitignore` 默认忽略 `assets/offline/` 中所有下载的卡面、曲绘、音频、谱面、续传文件与下载清单，仅保留该目录的 `README.md`。普通 `git add .` 会跳过这些资源目录，下载文件仍保存在本机，网页照常优先读取。
+
+如果此前已经对离线资源执行过 `git add`，或已经把它们纳入 Git 跟踪，在项目根目录执行一次：
+
+```bash
+git rm -r --cached --ignore-unmatch -- assets/offline
+git add .
+```
+
+`--cached` 只从 Git 索引移除，不删除本地文件。确认暂存内容后再按平常流程提交和推送。若 `git add` 仍在运行，请先按 Ctrl+C 结束它，再执行上面的命令。此处理会从后续版本中移除资源，但不会清除已有提交历史中的大文件；本地目录保留以供离线使用。
+
+检查某个下载文件是否被忽略：
+
+```bash
+git check-ignore -v assets/offline/music/long/0001_01/0001_01.mp3
+```
+
 官方操作说明：<https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site>。
 
 ## 本地使用
@@ -150,7 +169,7 @@ https://storage.exmeaning.com/sekai-cn-assets
 
 镜像需要提供允许浏览器跨域读取的资源，路径详见 [`data/charts/RESOURCE_NOTES.md`](data/charts/RESOURCE_NOTES.md)。程序不会把日服调整过的谱面静默当成国服谱面。
 
-图鉴数值、养成计算与本地方案无需联网。完整媒体没有全部打进压缩包，由你在本地按需下载。电脑上的下载文件不会自动进入已部署的 Pages 网站；如果线上也需要对应本地文件，需要将它们一起部署。全量媒体适合本机保存，Pages 容量限制及建议见离线说明。
+图鉴数值、养成计算与本地方案无需联网。完整媒体没有全部打进压缩包，由你在本地按需下载。下载目录默认被 Git 忽略，不随普通提交与推送进入 Pages；线上缺失的媒体按资源设置回退到镜像，本机继续优先使用离线文件。全量媒体适合本机保存，Pages 容量限制及建议见离线说明。
 
 ## 验证与开发
 

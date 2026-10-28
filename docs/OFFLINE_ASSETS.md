@@ -151,14 +151,32 @@ PNG 导出同样会从本地加载卡面。为保证图片导出和谱面读取�
 
 ## 与 GitHub Pages 一起使用
 
-下载到你电脑上的资源不会自动出现在已经发布的 GitHub Pages 网站。若要让线上网站使用
-其中一部分文件，需要把对应 `assets/offline/` 路径一起部署；运行可选 `scripts/build.py`
-时也会把已下载的最终资源复制到 `dist/`。构建会忽略未完成的 `.part`、临时状态和下载清单。
+下载到你电脑上的资源默认仅在本机使用。`.gitignore` 忽略 `assets/offline/` 下全部内容，
+仅保留目录说明 `README.md`；普通 `git add .`、提交和推送不会包含这些新下载的媒体。
+Git 会跳过已忽略的资源子目录，避免逐个读取大文件。图片、音频、谱面仍保留在本机，
+供本地网站读取；Pages 上没有对应文件时按网页设置在线回退。
+
+如果下载文件已经暂存或被跟踪，仅修改 `.gitignore` 不能解除跟踪。先结束仍在执行的
+`git add`，再在项目根目录执行一次：
+
+```bash
+git rm -r --cached --ignore-unmatch -- assets/offline
+git add .
+```
+
+`--cached` 不删除工作区文件。第二条命令会保留目录的 README，并跳过下载的资源。
+确认暂存内容后再提交、推送即可；这不会移除过去提交历史中的大文件。
+
+可使用 `git check-ignore -v <下载文件的相对路径>` 检查忽略规则。不要使用 `git add -f`
+强制添加下载目录；该选项会绕过忽略规则。
+
+可选的 `scripts/build.py` 面向本地或手工分发，仍把已下载的最终资源复制到 `dist/`，
+并排除未完成的 `.part`、临时状态和下载清单。`dist/` 本身也被 Git 忽略；Pages 从
+仓库根目录部署时不需要运行构建脚本。
 
 完整媒体适合在本机保存；GitHub 官方目前规定已发布的 Pages 站点大小不超过 **1 GB**，
 见 [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)。
-因此不建议把全部卡面和所有演唱版本一起提交到 Pages 仓库。可保留线上小体积版本，
-本机另外保存下载资源；或仅部署自己需要的一部分媒体。
+因此本项目默认保留线上小体积版本，本机另外保存下载资源。
 
 ## 更新数据或处理失败
 
