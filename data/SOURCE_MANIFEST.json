@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "region": "cn",
+    "language": "zh-CN",
+    "snapshotDate": "2026-10-27",
+    "retrievedAt": "2026-10-27T05:28:19+00:00",
+    "repository": "Sekai-World/sekai-master-db-cn-diff",
+    "commit": "f3082761851bc75bf67c5eafdec7576ae95ab3a2",
+    "sourceUpdatedAt": "2026-08-20T16:00:17Z",
+    "masterVersion": "6.4.1.3",
+    "sourceUrl": "https://github.com/Sekai-World/sekai-master-db-cn-diff/tree/f3082761851bc75bf67c5eafdec7576ae95ab3a2",
+    "assetRoots": [
+      "https://storage.exmeaning.com/sekai-cn-assets/"
+    ],
+    "releaseCutoff": 1793116799999,
+    "counts": {
+      "cards": 1345,
+      "releasedCards": 1249,
+      "musics": 655,
+      "releasedMusics": 641,
+      "musicDifficulties": 3389,
+      "characters": 26
+    },
+    "notice": "国服公开主数据快照；收集日期与上游更新时间分别列出。未来发布条目须按 releaseAt/publishedAt 过滤。"
+  },
+  "files": {
+    "areaItemLevels": {
+      "path": "areaItemLevels.json",
+      "sha256": "8dbc277dcf8586b0656bcaf44fa13c1cb7a41b9f12462e10fc123595dd5535cb",
+      "sizeBytes": 484747,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/areaItemLevels.json"
+    },
+    "areaItems": {
+      "path": "areaItems.json",
+      "sha256": "e7ef9b2e5b859f20a1df39cc7e31082882fec165e48ce07b3b2692631058244c",
+      "sizeBytes": 7934,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/areaItems.json"
+    },
+    "areas": {
+      "path": "areas.json",
+      "sha256": "2ac065a7dbf098f0fde1eab2ba54c4bd715f8852f9b13e23fb52559370f99d17",
+      "sizeBytes": 9388,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/areas.json"
+    },
+    "cardEpisodes": {
+      "path": "cardEpisodes.json",
+      "sha256": "d53b1d453a48f72edb16c9b0c96f7e27ff6657638b7801c4a555d881efdbd474",
+      "sizeBytes": 1245519,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cardEpisodes.json"
+    },
+    "cardMysekaiCanvasBonuses": {
+      "path": "cardMysekaiCanvasBonuses.json",
+      "sha256": "aeac216932a979819078a0270a469bd312c91becd5cc59e20a367a11206b8a51",
+      "sizeBytes": 719,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cardMysekaiCanvasBonuses.json"
+    },
+    "cardRarities": {
+      "path": "cardRarities.json",
+      "sha256": "0befb25e3c7f0c2081569e3855edacbc2b769756c521fbf754476c3b3d539517",
+      "sizeBytes": 575,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cardRarities.json"
+    },
+    "cardSkillCosts": {
+      "path": "cardSkillCosts.json",
+      "sha256": "67887670c2eb40f10d0169d44819b51053c19f7de8f6649dd00b9d81d5f741eb",
+      "sizeBytes": 5456,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cardSkillCosts.json"
+    },
+    "cardSupplies": {
+      "path": "cardSupplies.json",
+      "sha256": "26de54728850119e93311e8c27fc31659a7fc9d10aed35505676a67832353a15",
+      "sizeBytes": 716,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cardSupplies.json"
+    },
+    "cardSupplyGroups": {
+      "path": "cardSupplyGroups.json",
+      "sha256": "1b05f57678e68055056068008ba9697e5d89f5a54648b0306132a0de495abfed",
+      "sizeBytes": 374,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cardSupplyGroups.json"
+    },
+    "cards": {
+      "path": "cards.json",
+      "sha256": "b8271104b62008b97bfd324faa6f050aa13880f15417014ece2c1019f108955e",
+      "sizeBytes": 4452495,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/cards.json"
+    },
+    "characterProfiles": {
+      "path": "characterProfiles.json",
+      "sha256": "286c8f0c318991918800e2d7aecdb387804ebe525e8e8b2b60a4e7c1c489a63a",
+      "sizeBytes": 17098,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/characterProfiles.json"
+    },
+    "characterRanks": {
+      "path": "characterRanks.json",
+      "sha256": "f2bb9c8e2ad280cd83c761066f673c9f9d585f6efb19c92d2cf07cb67543ce3c",
+      "sizeBytes": 1164857,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/characterRanks.json"
+    },
+    "compactResourceBoxDetails": {
+      "path": "compactResourceBoxDetails.json",
+      "sha256": "2de181f692e37eb94dda3782a808d94e8298a166385e1541ac7546a3e6e9e174",
+      "sizeBytes": 6853986,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/compactResourceBoxDetails.json"
+    },
+    "gameCharacterUnits": {
+      "path": "gameCharacterUnits.json",
+      "sha256": "b3850c0315a99530e3a3c05821d70b9ee06f34f0afdc62949a1bfedfa6ef714d",
+      "sizeBytes": 11838,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/gameCharacterUnits.json"
+    },
+    "gameCharacters": {
+      "path": "gameCharacters.json",
+      "sha256": "879415ae36fa41f47a9b57a3409a77764193cd7a15e1711bfed48b29cb77dc1d",
+      "sizeBytes": 8928,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/gameCharacters.json"
+    },
+    "honors": {
+      "path": "honors.json",
+      "sha256": "d7ef9009e19d130e13bc566bcc507eb1fe3e099a39fcaca4dccdde78a7efca5e",
+      "sizeBytes": 3153263,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/honors.json"
+    },
+    "levels": {
+      "path": "levels.json",
+      "sha256": "e72cef2f47651ca3a4346bab521b49188408ae5c79c3e6ad8c17217761925742",
+      "sizeBytes": 88094,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/levels.json"
+    },
+    "masterLessons": {
+      "path": "masterLessons.json",
+      "sha256": "2d372caab153334c814f43fa914179859bc0dc0de371bf2cfadb5f7d7b83727b",
+      "sizeBytes": 178909,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/masterLessons.json"
+    },
+    "materials": {
+      "path": "materials.json",
+      "sha256": "b0abb1a3735949d7191383643f8af757fda3f16b63af36e6e0b966261d022545",
+      "sizeBytes": 73661,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/materials.json"
+    },
+    "musicArtists": {
+      "path": "musicArtists.json",
+      "sha256": "0302f33c82d939f0f0051fda5df6cbe03d40356eb58ac3dc50c99986ae161d6c",
+      "sizeBytes": 32650,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/musicArtists.json"
+    },
+    "musicDifficulties": {
+      "path": "musicDifficulties.json",
+      "sha256": "f09b8646ea7cf7242b9a656a43382895af6e46707e02cc3fb28015b9c881e7cf",
+      "sizeBytes": 420142,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/musicDifficulties.json"
+    },
+    "musicTags": {
+      "path": "musicTags.json",
+      "sha256": "ff7ae41ab91b50d812d9a5972c26082177dc4a13f0f69b40e0e5b341016d5525",
+      "sizeBytes": 82946,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/musicTags.json"
+    },
+    "musicVocals": {
+      "path": "musicVocals.json",
+      "sha256": "52aa9e2f1a9b537d0363b9987820f539b4c7be062fc909eda3d226f66381e8c8",
+      "sizeBytes": 1077988,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/musicVocals.json"
+    },
+    "musics": {
+      "path": "musics.json",
+      "sha256": "7c70bb7cb60638c495435f02fd88d2e0ae2dea20aa464322aea3a2d5b04ad351",
+      "sizeBytes": 541143,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/musics.json"
+    },
+    "mysekaiBlueprintMysekaiCanvasRelations": {
+      "path": "mysekaiBlueprintMysekaiCanvasRelations.json",
+      "sha256": "1472b4933607a152b735834196c15a04da304344995b23826a28ef4d08fd5550",
+      "sizeBytes": 3215,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiBlueprintMysekaiCanvasRelations.json"
+    },
+    "mysekaiBlueprintMysekaiMaterialCosts": {
+      "path": "mysekaiBlueprintMysekaiMaterialCosts.json",
+      "sha256": "f7176eea8725ca5654e23e15963abfbe691e525fe304fd1158ac6282ee9eb939",
+      "sizeBytes": 389843,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiBlueprintMysekaiMaterialCosts.json"
+    },
+    "mysekaiBlueprintTerms": {
+      "path": "mysekaiBlueprintTerms.json",
+      "sha256": "42ddc29c861cb8189a352dcde8ee960ab5ca264b240aa2488e3efa7bcd792690",
+      "sizeBytes": 7763,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiBlueprintTerms.json"
+    },
+    "mysekaiBlueprints": {
+      "path": "mysekaiBlueprints.json",
+      "sha256": "ee5e97be0e69f62c3963f0fafafd77b4b457c95f8ac55605af5acef77e5c4e69",
+      "sizeBytes": 221867,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiBlueprints.json"
+    },
+    "mysekaiFixtureGameCharacterGroupPerformanceBonuses": {
+      "path": "mysekaiFixtureGameCharacterGroupPerformanceBonuses.json",
+      "sha256": "9d70e6cebfa94fd842027f5184ef0e578d1ff467108cc09d8f0627e6a2c935bb",
+      "sizeBytes": 6848,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiFixtureGameCharacterGroupPerformanceBonuses.json"
+    },
+    "mysekaiFixtureGameCharacterGroups": {
+      "path": "mysekaiFixtureGameCharacterGroups.json",
+      "sha256": "789473046ef5a03854a29823d284da3ae5e1a339ec5b2f6dc9a401dce8c4219b",
+      "sizeBytes": 5261,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiFixtureGameCharacterGroups.json"
+    },
+    "mysekaiFixtureGameCharacterPerformanceBonusLimit": {
+      "path": "mysekaiFixtureGameCharacterPerformanceBonusLimit.json",
+      "sha256": "d1be14ba7b98ab3fa65cc40edd06dbcccba1b4b8f40e7e42b401c58f2f0a9db2",
+      "sizeBytes": 38,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiFixtureGameCharacterPerformanceBonusLimit.json"
+    },
+    "mysekaiFixtures": {
+      "path": "mysekaiFixtures.json",
+      "sha256": "c1f6761283c3374446f34c0a7034730f19cba0239fe27104f8ea00ef28d41c96",
+      "sizeBytes": 1258119,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiFixtures.json"
+    },
+    "mysekaiGateLevels": {
+      "path": "mysekaiGateLevels.json",
+      "sha256": "75a4febf1b6865ea3cb33f6c963fbccd3271f3d51c591ab0071f32c5d3d2d687",
+      "sizeBytes": 38257,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiGateLevels.json"
+    },
+    "mysekaiGateMaterialGroups": {
+      "path": "mysekaiGateMaterialGroups.json",
+      "sha256": "405b21f9f1e9ec085521874325daec13d105df7fedab59beea55e87de5c75b7e",
+      "sizeBytes": 92276,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiGateMaterialGroups.json"
+    },
+    "mysekaiGates": {
+      "path": "mysekaiGates.json",
+      "sha256": "8d91547231aada641443ed949a794fe2e52a20cb0163f16f37679231805a097b",
+      "sizeBytes": 723,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiGates.json"
+    },
+    "mysekaiMaterials": {
+      "path": "mysekaiMaterials.json",
+      "sha256": "ba571d0f26813ee39aea942461fc589a51da15e1f506d839cc0662832af3dcb0",
+      "sizeBytes": 33055,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/mysekaiMaterials.json"
+    },
+    "practiceTickets": {
+      "path": "practiceTickets.json",
+      "sha256": "808fa63b51dad2c87a9c6b3aaf67e825d418fed9c3303651ef79dcf5c553e43d",
+      "sizeBytes": 13868,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/practiceTickets.json"
+    },
+    "releaseConditions": {
+      "path": "releaseConditions.json",
+      "sha256": "09eebdb3e088a49025609540006195dfd2d9921e2ebae856b96b6cee3bbf757e",
+      "sizeBytes": 1593676,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/releaseConditions.json"
+    },
+    "shopItems": {
+      "path": "shopItems.json",
+      "sha256": "248b632fe2ffdf77a6f1758a2a1bac4894f59ccc6cf760a26d44ce9a2b9f369b",
+      "sizeBytes": 954052,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/shopItems.json"
+    },
+    "skillPracticeTickets": {
+      "path": "skillPracticeTickets.json",
+      "sha256": "fbe79655b8b5dcdad8597ba0a7d1507dc654fd8828659760d66e19d8e7936a89",
+      "sizeBytes": 14604,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/skillPracticeTickets.json"
+    },
+    "skills": {
+      "path": "skills.json",
+      "sha256": "71b9ea058b50cc3cca26cb3aa3b0deab9f3d15656fb474395b43233d803c0374",
+      "sizeBytes": 112974,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/skills.json"
+    },
+    "unitProfiles": {
+      "path": "unitProfiles.json",
+      "sha256": "266700b8117a94eaab6e2c4ace28904f4a61228865dfc5944ae9c5b052e46b44",
+      "sizeBytes": 2461,
+      "source": "https://raw.githubusercontent.com/Sekai-World/sekai-master-db-cn-diff/f3082761851bc75bf67c5eafdec7576ae95ab3a2/unitProfiles.json"
+    }
+  },
+  "bundleSha256": "9de5994fd430be60f3d10f88c8496527b6cd781bbe8b175bed2f75b6ef72a6ce",
+  "tableCounts": {
+    "levels": 1150,
+    "areaItems": 55,
+    "cardSkillCosts": 66,
+    "masterLessons": 25,
+    "cardRarities": 5,
+    "materials": 289,
+    "cardEpisodes": 2576,
+    "areaItemLevels": 1100,
+    "cards": 1345,
+    "characterRanks": 4550,
+    "gameCharacterUnits": 56,
+    "practiceTickets": 81,
+    "skillPracticeTickets": 82,
+    "skills": 22,
+    "unitProfiles": 6,
+    "musicArtists": 336,
+    "honors": 44,
+    "gameCharacters": 26,
+    "musicDifficulties": 3389,
+    "cardSupplies": 7,
+    "cardMysekaiCanvasBonuses": 5,
+    "areas": 27,
+    "musicTags": 1530,
+    "characterProfiles": 26,
+    "mysekaiBlueprintMysekaiCanvasRelations": 30,
+    "musicVocals": 1614,
+    "mysekaiBlueprintMysekaiMaterialCosts": 3338,
+    "musics": 655,
+    "mysekaiGates": 5,
+    "cardSupplyGroups": 6,
+    "mysekaiMaterials": 75,
+    "mysekaiFixtureGameCharacterGroups": 78,
+    "mysekaiFixtures": 1161,
+    "mysekaiGateMaterialGroups": 1000,
+    "mysekaiFixtureGameCharacterGroupPerformanceBonuses": 78,
+    "mysekaiGateLevels": 200,
+    "mysekaiBlueprints": 1116,
+    "mysekaiFixtureGameCharacterPerformanceBonusLimit": 1,
+    "shopItems": 2513,
+    "releaseConditions": 7516,
+    "mysekaiBlueprintTerms": 70,
+    "areaItemCosts": 1100,
+    "canvasRecipes": 6
+  }
+}

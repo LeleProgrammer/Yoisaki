@@ -1,0 +1,99 @@
+PASS power/one_star_level_1
+PASS power/one_star_max_level
+PASS power/three_star_before_training
+PASS power/three_star_after_training
+PASS power/four_star_before_training
+PASS power/four_star_after_training
+PASS power/four_star_master5
+PASS power/four_star_both_stories
+PASS power/four_star_canvas_in_base
+PASS power/birthday_card_max
+PASS power/single_area_mixed_context
+PASS power/five_same_unit_and_attribute
+PASS power/five_same_unit_mixed_attribute
+PASS power/five_same_attribute_mixed_unit
+PASS power/virtual_singer_choose_higher_unit
+PASS power/five_virtual_singers
+PASS power/miku_all_five_personal_items
+PASS power/original_miku_gate_max
+PASS power/supported_miku_gate_only_support
+PASS power/furniture_0_1_percent_unit
+PASS power/furniture_cap
+PASS power/team_honor_added_once
+PASS power/canvas_then_all_percentages
+PASS power/float32_character_boundary
+PASS materials/four_star_training_only
+PASS materials/four_star_master5_fragments
+PASS materials/four_star_master5_crystals
+PASS materials/canvas_small
+PASS materials/canvas_large
+PASS materials/shared_area_once_with_inventory
+PASS materials/gate_level1_to3
+PASS materials/stories_both
+PASS materials/practice_ticket_round_up
+PASS materials/skill_ticket
+PASS materials/skill_fragments
+PASS materials/unchanged_state_zero_cost
+PASS skill/card1253-reference-level1
+PASS skill/card1253-reference-level2
+PASS skill/card1253-reference-level3
+PASS skill/card1253-reference-level4
+PASS skill/card1195-unitcount-level1
+PASS skill/card1195-unitcount-level2
+PASS skill/card1195-unitcount-level3
+PASS skill/card1195-unitcount-level4
+PASS skill/card1215-enhance-level1
+PASS skill/card1215-enhance-level2
+PASS skill/card1215-enhance-level3
+PASS skill/card1215-enhance-level4
+PASS skill/card1253-trained-lv1-rank1
+PASS skill/card1253-trained-lv1-rank2
+PASS skill/card1253-trained-lv1-rank50
+PASS skill/card1253-trained-lv1-rank100
+PASS skill/card1253-trained-lv1-rank175
+PASS skill/card1253-trained-lv4-rank1
+PASS skill/card1253-trained-lv4-rank2
+PASS skill/card1253-trained-lv4-rank50
+PASS skill/card1253-trained-lv4-rank100
+PASS skill/card1253-trained-lv4-rank175
+PASS skill/card1195-trained-lv1-rank1
+PASS skill/card1195-trained-lv1-rank2
+PASS skill/card1195-trained-lv1-rank50
+PASS skill/card1195-trained-lv1-rank100
+PASS skill/card1195-trained-lv1-rank175
+PASS skill/card1195-trained-lv4-rank1
+PASS skill/card1195-trained-lv4-rank2
+PASS skill/card1195-trained-lv4-rank50
+PASS skill/card1195-trained-lv4-rank100
+PASS skill/card1195-trained-lv4-rank175
+PASS skills/all-released-original-and-trained-texts-resolve
+PASS data/card-level-arrays-have-real-entries
+PASS data/area-costs-cover-every-level-exactly
+PASS data/released-cards-never-include-future-entries
+PASS data/local-card-art-paths-exist
+PASS SUS/BPM-and-beats-per-bar-segment-integration
+PASS SUS/fractional-bar-BPM-change
+PASS SUS/merge-critical-slide-and-flick-no-duplicate-objects
+PASS SUS/zero-scroll-speed-does-not-change-audio-timing
+PASS SUS/reject-HTML-instead-of-rendering-fake-score
+PASS SUS/real-cn-131_master.sus
+PASS SUS/real-cn-1_expert.sus
+PASS SUS/real-cn-1_master.sus
+PASS SUS/real-cn-2_expert.sus
+PASS SUS/real-cn-2_master.sus
+PASS SUS/real-cn-3_master.sus
+PASS plans/JSON-roundtrip-preserves-calculations
+PASS plans/unknown-card-import-fails
+PASS plans/resource-type-and-id-are-separate-inventory-keys
+PASS plans/ordinary-team-rejects-duplicate-character
+PASS plans/target-downgrade-is-rejected
+
+89 checks passed. CN data 6.4.1.3 (f3082761851b).
+
+Offline media update (2026-10-27)
+node tests/verify-resources.js: 22 resource checks passed.
+python -m unittest discover -s tests -p test_downloader.py -v: 20 tests passed.
+Combined with the original suite above: 131 checks passed.
+Real CDN sample download: 15 resources succeeded; repeated run skipped existing files.
+Browser QA: local card art, offline PNG generation, local chart and audio playback, online fallback.
+Build: incomplete transfers and download state excluded; Python scripts parse with 3.8 syntax.

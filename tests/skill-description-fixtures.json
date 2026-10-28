@@ -1,0 +1,333 @@
+{
+  "schema": "yoisaki-skill-description-goldens",
+  "version": 1,
+  "source": {
+    "masterCommit": "f3082761851bc75bf67c5eafdec7576ae95ab3a2",
+    "uniViewerCommit": "c1dbeb40986bf66af01d1925b2e9f4598533c6c9",
+    "moesekaiCommit": "79dbc4a21555e5ff7dfe04a45f96ba19f4793995",
+    "canonicalCalculatorCommit": "bee3aefa1c123c80e13782a1728a2aa5e4bc10b5",
+    "rationale": "原始国服模板与数值；o按activateEffectValue2上限，u按端点累计60，e/m按enhance与5倍，r/s按角色阈值表；详见docs/SKILL_TEMPLATE_NOTES.md"
+  },
+  "cases": [
+    {
+      "id": "card1253-reference-level1",
+      "input": {
+        "cardId": 1253,
+        "skillId": 23,
+        "level": 1,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高60%，并从编组中随机选择其他1名成员，提高其得分提高技能最大值的50%（最多合计提高120%）。"
+    },
+    {
+      "id": "card1253-reference-level2",
+      "input": {
+        "cardId": 1253,
+        "skillId": 23,
+        "level": 2,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高65%，并从编组中随机选择其他1名成员，提高其得分提高技能最大值的50%（最多合计提高130%）。"
+    },
+    {
+      "id": "card1253-reference-level3",
+      "input": {
+        "cardId": 1253,
+        "skillId": 23,
+        "level": 3,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高70%，并从编组中随机选择其他1名成员，提高其得分提高技能最大值的50%（最多合计提高140%）。"
+    },
+    {
+      "id": "card1253-reference-level4",
+      "input": {
+        "cardId": 1253,
+        "skillId": 23,
+        "level": 4,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高80%，并从编组中随机选择其他1名成员，提高其得分提高技能最大值的50%（最多合计提高150%）。"
+    },
+    {
+      "id": "card1195-unitcount-level1",
+      "input": {
+        "cardId": 1195,
+        "skillId": 24,
+        "level": 1,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高70%，与自身不同组合编组时，每编组1种得分提高自身30%，最多2种有效(最多130%)。"
+    },
+    {
+      "id": "card1195-unitcount-level2",
+      "input": {
+        "cardId": 1195,
+        "skillId": 24,
+        "level": 2,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高75%，与自身不同组合编组时，每编组1种得分提高自身30%，最多2种有效(最多135%)。"
+    },
+    {
+      "id": "card1195-unitcount-level3",
+      "input": {
+        "cardId": 1195,
+        "skillId": 24,
+        "level": 3,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高80%，与自身不同组合编组时，每编组1种得分提高自身30%，最多2种有效(最多140%)。"
+    },
+    {
+      "id": "card1195-unitcount-level4",
+      "input": {
+        "cardId": 1195,
+        "skillId": 24,
+        "level": 4,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高90%，与自身不同组合编组时，每编组1种得分提高自身30%，最多2种有效(最多150%)。"
+    },
+    {
+      "id": "card1215-enhance-level1",
+      "input": {
+        "cardId": 1215,
+        "skillId": 17,
+        "level": 1,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高80%。\n 除自身以外，每编组1名“Vivid BAD SQUAD”成员，得分提高10%，若所有成员所属组合相同则再提高10%（最多130%）。"
+    },
+    {
+      "id": "card1215-enhance-level2",
+      "input": {
+        "cardId": 1215,
+        "skillId": 17,
+        "level": 2,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高85%。\n 除自身以外，每编组1名“Vivid BAD SQUAD”成员，得分提高10%，若所有成员所属组合相同则再提高10%（最多135%）。"
+    },
+    {
+      "id": "card1215-enhance-level3",
+      "input": {
+        "cardId": 1215,
+        "skillId": 17,
+        "level": 3,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高90%。\n 除自身以外，每编组1名“Vivid BAD SQUAD”成员，得分提高10%，若所有成员所属组合相同则再提高10%（最多140%）。"
+    },
+    {
+      "id": "card1215-enhance-level4",
+      "input": {
+        "cardId": 1215,
+        "skillId": 17,
+        "level": 4,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高100%。\n 除自身以外，每编组1名“Vivid BAD SQUAD”成员，得分提高10%，若所有成员所属组合相同则再提高10%（最多150%）。"
+    },
+    {
+      "id": "card1253-trained-lv1-rank1",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高90%，并根据“东云彰人”的角色等级再提高0%（角色等级每2级+1%，目前合计90%/最多140%）。"
+    },
+    {
+      "id": "card1253-trained-lv1-rank2",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 2
+      },
+      "expected": "5秒内，得分提高90%，并根据“东云彰人”的角色等级再提高1%（角色等级每2级+1%，目前合计91%/最多140%）。"
+    },
+    {
+      "id": "card1253-trained-lv1-rank50",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 50
+      },
+      "expected": "5秒内，得分提高90%，并根据“东云彰人”的角色等级再提高25%（角色等级每2级+1%，目前合计115%/最多140%）。"
+    },
+    {
+      "id": "card1253-trained-lv1-rank100",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 100
+      },
+      "expected": "5秒内，得分提高90%，并根据“东云彰人”的角色等级再提高50%（角色等级每2级+1%，目前合计140%/最多140%）。"
+    },
+    {
+      "id": "card1253-trained-lv1-rank175",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 175
+      },
+      "expected": "5秒内，得分提高90%，并根据“东云彰人”的角色等级再提高50%（角色等级每2级+1%，目前合计140%/最多140%）。"
+    },
+    {
+      "id": "card1253-trained-lv4-rank1",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高110%，并根据“东云彰人”的角色等级再提高0%（角色等级每2级+1%，目前合计110%/最多160%）。"
+    },
+    {
+      "id": "card1253-trained-lv4-rank2",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 2
+      },
+      "expected": "5秒内，得分提高110%，并根据“东云彰人”的角色等级再提高1%（角色等级每2级+1%，目前合计111%/最多160%）。"
+    },
+    {
+      "id": "card1253-trained-lv4-rank50",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 50
+      },
+      "expected": "5秒内，得分提高110%，并根据“东云彰人”的角色等级再提高25%（角色等级每2级+1%，目前合计135%/最多160%）。"
+    },
+    {
+      "id": "card1253-trained-lv4-rank100",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 100
+      },
+      "expected": "5秒内，得分提高110%，并根据“东云彰人”的角色等级再提高50%（角色等级每2级+1%，目前合计160%/最多160%）。"
+    },
+    {
+      "id": "card1253-trained-lv4-rank175",
+      "input": {
+        "cardId": 1253,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 175
+      },
+      "expected": "5秒内，得分提高110%，并根据“东云彰人”的角色等级再提高50%（角色等级每2级+1%，目前合计160%/最多160%）。"
+    },
+    {
+      "id": "card1195-trained-lv1-rank1",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高90%，并根据“KAITO”的角色等级再提高0%（角色等级每2级+1%，目前合计90%/最多140%）。"
+    },
+    {
+      "id": "card1195-trained-lv1-rank2",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 2
+      },
+      "expected": "5秒内，得分提高90%，并根据“KAITO”的角色等级再提高1%（角色等级每2级+1%，目前合计91%/最多140%）。"
+    },
+    {
+      "id": "card1195-trained-lv1-rank50",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 50
+      },
+      "expected": "5秒内，得分提高90%，并根据“KAITO”的角色等级再提高25%（角色等级每2级+1%，目前合计115%/最多140%）。"
+    },
+    {
+      "id": "card1195-trained-lv1-rank100",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 100
+      },
+      "expected": "5秒内，得分提高90%，并根据“KAITO”的角色等级再提高50%（角色等级每2级+1%，目前合计140%/最多140%）。"
+    },
+    {
+      "id": "card1195-trained-lv1-rank175",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 1,
+        "characterRank": 175
+      },
+      "expected": "5秒内，得分提高90%，并根据“KAITO”的角色等级再提高50%（角色等级每2级+1%，目前合计140%/最多140%）。"
+    },
+    {
+      "id": "card1195-trained-lv4-rank1",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 1
+      },
+      "expected": "5秒内，得分提高110%，并根据“KAITO”的角色等级再提高0%（角色等级每2级+1%，目前合计110%/最多160%）。"
+    },
+    {
+      "id": "card1195-trained-lv4-rank2",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 2
+      },
+      "expected": "5秒内，得分提高110%，并根据“KAITO”的角色等级再提高1%（角色等级每2级+1%，目前合计111%/最多160%）。"
+    },
+    {
+      "id": "card1195-trained-lv4-rank50",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 50
+      },
+      "expected": "5秒内，得分提高110%，并根据“KAITO”的角色等级再提高25%（角色等级每2级+1%，目前合计135%/最多160%）。"
+    },
+    {
+      "id": "card1195-trained-lv4-rank100",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 100
+      },
+      "expected": "5秒内，得分提高110%，并根据“KAITO”的角色等级再提高50%（角色等级每2级+1%，目前合计160%/最多160%）。"
+    },
+    {
+      "id": "card1195-trained-lv4-rank175",
+      "input": {
+        "cardId": 1195,
+        "skillId": 22,
+        "level": 4,
+        "characterRank": 175
+      },
+      "expected": "5秒内，得分提高110%，并根据“KAITO”的角色等级再提高50%（角色等级每2级+1%，目前合计160%/最多160%）。"
+    }
+  ]
+}

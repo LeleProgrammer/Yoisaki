@@ -1,0 +1,13 @@
+dist/
+__pycache__/
+*.pyc
+.openai/
+node_modules/
+.DS_Store
+Thumbs.db
+*.part
+*.part.json
+assets/offline/download-manifest.json
+assets/offline/download-manifest.json.tmp
+/assets/offline/*
+!/assets/offline/README.md

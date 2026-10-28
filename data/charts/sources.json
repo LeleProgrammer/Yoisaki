@@ -1,0 +1,60 @@
+{
+  "region": "cn",
+  "fetchedAt": "2026-10-27",
+  "assets": [
+    {
+      "musicId": 1,
+      "difficulty": "expert",
+      "file": "data/charts/1_expert.sus",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/music_score/0001_01/expert.txt",
+      "size": 14689,
+      "cors": "*",
+      "title": "\"Tell your world\""
+    },
+    {
+      "musicId": 1,
+      "difficulty": "master",
+      "file": "data/charts/1_master.sus",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/music_score/0001_01/master.txt",
+      "size": 67902,
+      "cors": "*",
+      "title": "\"Tell your world\""
+    },
+    {
+      "musicId": 2,
+      "difficulty": "expert",
+      "file": "data/charts/2_expert.sus",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/music_score/0002_01/expert.txt",
+      "size": 16265,
+      "cors": "*",
+      "title": "\"\""
+    },
+    {
+      "musicId": 2,
+      "difficulty": "master",
+      "file": "data/charts/2_master.sus",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/music_score/0002_01/master.txt",
+      "size": 38397,
+      "cors": "*",
+      "title": "\"\""
+    },
+    {
+      "musicId": 3,
+      "difficulty": "master",
+      "file": "data/charts/3_master.sus",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/music_score/0003_01/master.txt",
+      "size": 21573,
+      "cors": "*",
+      "title": "\"\""
+    },
+    {
+      "musicId": 131,
+      "difficulty": "master",
+      "file": "data/charts/131_master.sus",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/music_score/0131_01/master.txt",
+      "size": 24692,
+      "cors": "*",
+      "title": "\"\""
+    }
+  ]
+}

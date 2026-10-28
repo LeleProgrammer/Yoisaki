@@ -1,0 +1,85 @@
+{
+  "fetchedAt": "2026-10-27",
+  "assets": [
+    {
+      "kind": "audio",
+      "file": "assets/audio/0001_01.mp3",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/long/0001_01/0001_01.mp3",
+      "size": 1587454,
+      "cors": "*",
+      "type": "audio/mpeg",
+      "originalSize": 5291406,
+      "transform": "FFmpeg MP3 96 kbps stereo; no trimming; original leading silence retained",
+      "sha256": "cc928649086736d3ddd82988c4342515f93aad04a036550f1a7ad59174204499",
+      "durationSec": 132.257959
+    },
+    {
+      "kind": "audio",
+      "file": "assets/audio/0002_02.mp3",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/long/0002_02/0002_02.mp3",
+      "size": 1392789,
+      "cors": "*",
+      "type": "audio/mpeg",
+      "originalSize": 4642524,
+      "transform": "FFmpeg MP3 96 kbps stereo; no trimming; original leading silence retained",
+      "sha256": "cffaef73c7f17d91809f365a184a5860529301b030554e4cd8509052988faeaa",
+      "durationSec": 116.035918
+    },
+    {
+      "kind": "jacket",
+      "file": "assets/samples/jacket_s_001.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/music/jacket/jacket_s_001/jacket_s_001.webp",
+      "size": 807270,
+      "cors": "*",
+      "type": "image/webp"
+    },
+    {
+      "kind": "thumb",
+      "file": "assets/samples/res017_no001_normal.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/thumbnail/chara/res017_no001_normal.webp",
+      "size": 20400,
+      "cors": "*",
+      "type": "image/webp"
+    },
+    {
+      "kind": "art",
+      "file": "assets/samples/card_normal.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/character/member/res017_no001/card_normal.webp",
+      "size": 458812,
+      "cors": "*",
+      "type": "image/webp"
+    },
+    {
+      "kind": "art",
+      "file": "assets/samples/res017_no046_card_normal.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/character/member/res017_no046/card_normal.webp",
+      "size": 2320048,
+      "cors": "*",
+      "type": "image/webp"
+    },
+    {
+      "kind": "art",
+      "file": "assets/samples/res017_no046_card_after_training.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/character/member/res017_no046/card_after_training.webp",
+      "size": 3470818,
+      "cors": "*",
+      "type": "image/webp"
+    },
+    {
+      "kind": "thumb",
+      "file": "assets/samples/res017_no046_normal.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/thumbnail/chara/res017_no046_normal.webp",
+      "size": 18120,
+      "cors": "*",
+      "type": "image/webp"
+    },
+    {
+      "kind": "thumb",
+      "file": "assets/samples/res017_no046_after_training.webp",
+      "source": "https://storage.exmeaning.com/sekai-cn-assets/thumbnail/chara/res017_no046_after_training.webp",
+      "size": 27346,
+      "cors": "*",
+      "type": "image/webp"
+    }
+  ]
+}

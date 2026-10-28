@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11121c">
+  <meta name="description" content="Yoisaki · 国服 PJSK 卡牌图鉴、静态与动态谱面研究室、单卡及五人队伍养成规划工具。">
+  <title>Yoisaki · 世界的另一种可能</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('yoisaki-theme')||'dark'}catch(e){}</script>
+</head>
+<body>
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+ <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H5V10m4 10v-7h6v7"/></symbol>
+ <symbol id="i-cards" viewBox="0 0 24 24"><rect x="5" y="5" width="15" height="16" rx="3"/><path d="M16 2H5a3 3 0 0 0-3 3v12m7-5 3-3 5 6H9"/></symbol>
+ <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 21V3h16v18M8 3v18m8-18v18M4 10h8m0 6h8"/></symbol>
+ <symbol id="i-calc" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M8 6h8M8 11h1m6 0h1m-8 5h1m6 0h1"/></symbol>
+ <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V4h7l2 3h9v13H3z"/></symbol>
+ <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+ <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.9 13a9 9 0 0 1-9.9-9.9A9 9 0 1 0 20.9 13Z"/></symbol>
+ <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+ <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+ <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+ <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 16v5h16v-5"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+ <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+ <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol>
+ <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 4v16m8-16v16"/></symbol>
+ <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 4v6h6M3.5 10a9 9 0 1 1 1 8"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+ <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.2"/></symbol>
+ <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+ <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h12l4 4v14H3V3h2m2 0v6h10V3M7 21v-7h10v7"/></symbol>
+ <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
+ <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></symbol>
+</defs></svg>
+<div class="app-shell">
+ <aside class="sidebar">
+  <a class="brand" href="#home" aria-label="Yoisaki 首页"><span class="brand-mark">y<span>✦</span></span><span>Yoisaki<small>SEKAI COMPANION</small></span></a>
+  <div class="nav-caption">你的世界，随心探索</div>
+  <nav class="main-nav" aria-label="主要导航">
+   <a href="#home" data-view="home" aria-label="概览"><svg><use href="#i-home"/></svg><span>概览</span></a>
+   <a href="#cards" data-view="cards" aria-label="卡牌图鉴"><svg><use href="#i-cards"/></svg><span>卡牌图鉴</span></a>
+   <a href="#charts" data-view="charts" aria-label="谱面研究室"><svg><use href="#i-chart"/></svg><span>谱面研究室</span><span class="nav-dot"></span></a>
+   <a href="#planner" data-view="planner" aria-label="养成规划"><svg><use href="#i-calc"/></svg><span>养成规划</span></a>
+   <a href="#saved" data-view="saved" aria-label="我的方案"><svg><use href="#i-folder"/></svg><span>我的方案</span></a>
+  </nav>
+  <div class="sidebar-bottom"><div class="server-pill"><span></span>中国大陆 · CN</div><p>为每一个喜欢的瞬间。<br>非官方 PJSK 资料与规划工具</p><button class="text-btn" id="about-button"><svg><use href="#i-info"/></svg>数据与使用说明</button></div>
+ </aside>
+ <div class="main-shell">
+  <header class="topbar"><div class="breadcrumb"><span>Yoisaki</span><svg><use href="#i-chevron"/></svg><strong id="page-breadcrumb">概览</strong></div><div class="top-actions"><span id="data-version" class="data-version">正在读取内置资料</span><button id="theme-toggle" class="icon-btn" aria-label="切换深浅主题" title="切换深浅主题"><svg><use href="#i-moon"/></svg></button><button class="icon-btn" id="global-settings" aria-label="资源设置" title="资源设置"><svg><use href="#i-settings"/></svg></button></div></header>
+  <main id="main-content">
+   <section id="view-home" class="view" aria-label="概览"></section>
+   <section id="view-cards" class="view hidden" aria-label="卡牌图鉴"></section>
+   <section id="view-charts" class="view hidden" aria-label="谱面研究室"></section>
+   <section id="view-planner" class="view hidden" aria-label="养成规划"></section>
+   <section id="view-saved" class="view hidden" aria-label="我的方案"></section>
+  </main>
+  <footer class="site-footer"><span>Yoisaki <span class="footer-star">✦</span> Made for your SEKAI</span><span>资料与素材归原权利人所有 · 程序 GPL-3.0</span></footer>
+ </div>
+</div>
+<dialog id="detail-dialog" class="detail-dialog"><div id="detail-content"></div></dialog>
+<dialog id="picker-dialog" class="picker-dialog"><div class="dialog-heading"><div><span class="eyebrow">SELECT A MEMBER</span><h2>选择一张卡牌</h2></div><button class="icon-btn" data-close="picker-dialog" aria-label="关闭卡牌选择"><svg><use href="#i-close"/></svg></button></div><div id="picker-filters"></div><div id="picker-results" class="picker-results"></div></dialog>
+<dialog id="utility-dialog" class="utility-dialog"><div id="utility-content"></div></dialog>
+<div id="toast-region" class="toast-region" aria-live="polite"></div>
+<input type="file" id="import-file" accept="application/json,.json" class="hidden">
+<noscript><p class="noscript">Yoisaki 需要启用 JavaScript 才能检索资料、计算养成方案和播放谱面。</p></noscript>
+<script src="data/master.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/resources.js"></script>
+<script src="assets/js/vendor/sus-parser.js"></script>
+<script src="data/charts/bundled.js"></script>
+<script src="assets/js/chart.js"></script>
+<script src="assets/js/export.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

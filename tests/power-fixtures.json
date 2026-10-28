@@ -1,0 +1,4081 @@
+{
+  "schema": "yoisaki-independent-goldens",
+  "version": 1,
+  "provenance": {
+    "cnMasterCommit": "f3082761851bc75bf67c5eafdec7576ae95ab3a2",
+    "canonicalRepository": "xfl03/sekai-calculator",
+    "canonicalCommit": "bee3aefa1c123c80e13782a1728a2aa5e4bc10b5",
+    "canonicalVersion": "0.19.1",
+    "sourceSha256": {
+      "collection-util.ts": "bf0878d093bbc8aca5fefbf506f27f20c9c513ac25534c2c71463dd4771d43b3",
+      "card-detail-map.ts": "ac10f3d34feea31e265668db71cdca781a25c69375692c1307515796f1c16bd5",
+      "card-detail-map-power.ts": "a6205f67013064bc4c5116f874f992def0b8d4200c8f81425fcb729ee9331587",
+      "card-power-calculator.ts": "2ddd5a3c31ad5ee6950b84d3ecc1c7073e799d615ae785473f512df31717815c",
+      "card-service.ts": "685434fdd43f9f3c96a4db94b9b196187c50f05ac619606e6133aad75eae74c2",
+      "deck-calculator.ts": "a217b9d90d697a089c2e037ae2b0de16aff7ccbde47a0ae5ca9876203b087528"
+    },
+    "method": "直接使用Node module.stripTypeScriptTypes转换并执行固定提交的原始CardPowerCalculator/CardService/DeckCalculator；仅移除模块import/export，stub无关的技能与活动计算。数据provider来自国服master.js；没有加载或调用Yoisaki core.js生成expected。",
+    "fixtureLimit": "国服mysekaiFixtureGameCharacterPerformanceBonusLimit.bonusRateLimit=100作为上游getCardPower的mysekaiFixtureLimit参数。",
+    "expectedMapping": "原库base/areaItemBonus/characterBonus/fixtureBonus/gateBonus/honorBonus分别对应base/area/character/fixture/gate/honor；total不变。",
+    "materialMethod": "从国服原始特训/剧情/专家替代方案/逐级区域升级/大门材料组/画布配方逐项读取并汇总；没有调用Yoisaki calculate。"
+  },
+  "cases": [
+    {
+      "id": "one_star_level_1",
+      "description": "真实一星卡 Lv1、角色等级1；检查三个基础维度及最小角色加成。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 1,
+              "current": {
+                "level": 1,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 1,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 3030,
+        "area": 0,
+        "character": 2,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 3032,
+        "cards": [
+          {
+            "cardId": 1,
+            "base": 3030,
+            "area": 0,
+            "character": 2,
+            "fixture": 0,
+            "gate": 0,
+            "total": 3032
+          }
+        ]
+      }
+    },
+    {
+      "id": "one_star_max_level",
+      "description": "一星满级20；不能套用四星或线性近似。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 1,
+              "current": {
+                "level": 20,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 20,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 7575,
+        "area": 0,
+        "character": 6,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 7581,
+        "cards": [
+          {
+            "cardId": 1,
+            "base": 7575,
+            "area": 0,
+            "character": 6,
+            "fixture": 0,
+            "gate": 0,
+            "total": 7581
+          }
+        ]
+      }
+    },
+    {
+      "id": "three_star_before_training",
+      "description": "三星未特训 Lv40。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 3,
+              "current": {
+                "level": 40,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 40,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 18185,
+        "area": 0,
+        "character": 17,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 18202,
+        "cards": [
+          {
+            "cardId": 3,
+            "base": 18185,
+            "area": 0,
+            "character": 17,
+            "fixture": 0,
+            "gate": 0,
+            "total": 18202
+          }
+        ]
+      }
+    },
+    {
+      "id": "three_star_after_training",
+      "description": "同张三星特训 Lv50，三个维度各加固定特训值。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 3,
+              "current": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 28175,
+        "area": 0,
+        "character": 26,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 28201,
+        "cards": [
+          {
+            "cardId": 3,
+            "base": 28175,
+            "area": 0,
+            "character": 26,
+            "fixture": 0,
+            "gate": 0,
+            "total": 28201
+          }
+        ]
+      }
+    },
+    {
+      "id": "four_star_before_training",
+      "description": "四星未特训 Lv50、专家0。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 50,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 50,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 20361,
+        "area": 0,
+        "character": 19,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 20380,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 20361,
+            "area": 0,
+            "character": 19,
+            "fixture": 0,
+            "gate": 0,
+            "total": 20380
+          }
+        ]
+      }
+    },
+    {
+      "id": "four_star_after_training",
+      "description": "四星特训 Lv60、专家0。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 31745,
+        "area": 0,
+        "character": 30,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 31775,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 31745,
+            "area": 0,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 31775
+          }
+        ]
+      }
+    },
+    {
+      "id": "four_star_master5",
+      "description": "四星专家0→5各级加成累计。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 34745,
+        "area": 0,
+        "character": 33,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 34778,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 34745,
+            "area": 0,
+            "character": 33,
+            "fixture": 0,
+            "gate": 0,
+            "total": 34778
+          }
+        ]
+      }
+    },
+    {
+      "id": "four_star_both_stories",
+      "description": "专家5并阅读前后篇；不能只计一篇。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 1,
+                "story1": true,
+                "story2": true,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 1,
+                "story1": true,
+                "story2": true,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 37295,
+        "area": 0,
+        "character": 35,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 37330,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 37295,
+            "area": 0,
+            "character": 35,
+            "fixture": 0,
+            "gate": 0,
+            "total": 37330
+          }
+        ]
+      }
+    },
+    {
+      "id": "four_star_canvas_in_base",
+      "description": "再制作装饰画，其固定值先进入base。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38795,
+        "area": 0,
+        "character": 38,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 38833,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 38795,
+            "area": 0,
+            "character": 38,
+            "fixture": 0,
+            "gate": 0,
+            "total": 38833
+          }
+        ]
+      }
+    },
+    {
+      "id": "birthday_card_max",
+      "description": "生日卡 Lv60、专家5、剧情和装饰画，没有特训加成。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 295,
+              "current": {
+                "level": 60,
+                "trained": false,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": false,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 36923,
+        "area": 0,
+        "character": 36,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 36959,
+        "cards": [
+          {
+            "cardId": 295,
+            "base": 36923,
+            "area": 0,
+            "character": 36,
+            "fixture": 0,
+            "gate": 0,
+            "total": 36959
+          }
+        ]
+      }
+    },
+    {
+      "id": "single_area_mixed_context",
+      "description": "单卡、混组混属性时普通区域倍率；不匹配的角色/属性道具不得生效。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {
+              "1": 11,
+              "2": 20,
+              "31": 11,
+              "32": 5,
+              "46": 20,
+              "48": 9,
+              "49": 3
+            },
+            "target": {
+              "1": 11,
+              "2": 20,
+              "31": 11,
+              "32": 5,
+              "46": 20,
+              "48": 9,
+              "49": 3
+            }
+          },
+          "ranks": {
+            "current": {
+              "1": 37
+            },
+            "target": {
+              "1": 37
+            }
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38795,
+        "area": 13964,
+        "character": 1433,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 54192,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 38795,
+            "area": 13964,
+            "character": 1433,
+            "fixture": 0,
+            "gate": 0,
+            "total": 54192
+          }
+        ]
+      }
+    },
+    {
+      "id": "five_same_unit_and_attribute",
+      "description": "Leo/need 四名成员+应援初音，五人同组合且同cool属性，组合和属性道具均应使用全员倍率。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "team",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 290,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            {
+              "cardId": 209,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            {
+              "cardId": 208,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            {
+              "cardId": 207,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            {
+              "cardId": 579,
+              "current": {
+                "level": 50,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 50,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            }
+          ],
+          "areas": {
+            "current": {
+              "1": 10,
+              "2": 11,
+              "3": 12,
+              "4": 13,
+              "21": 14,
+              "22": 5,
+              "23": 6,
+              "24": 7,
+              "25": 8,
+              "31": 12,
+              "32": 13,
+              "46": 14,
+              "47": 15
+            },
+            "target": {
+              "1": 10,
+              "2": 11,
+              "3": 12,
+              "4": 13,
+              "21": 14,
+              "22": 5,
+              "23": 6,
+              "24": 7,
+              "25": 8,
+              "31": 12,
+              "32": 13,
+              "46": 14,
+              "47": 15
+            }
+          },
+          "ranks": {
+            "current": {
+              "1": 20,
+              "2": 21,
+              "3": 22,
+              "4": 23,
+              "21": 24
+            },
+            "target": {
+              "1": 20,
+              "2": 21,
+              "3": 22,
+              "4": 23,
+              "21": 24
+            }
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 189155,
+        "area": 143288,
+        "character": 4143,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 336586,
+        "cards": [
+          {
+            "cardId": 290,
+            "base": 38793,
+            "area": 28706,
+            "character": 774,
+            "fixture": 0,
+            "gate": 0,
+            "total": 68273
+          },
+          {
+            "cardId": 209,
+            "base": 38788,
+            "area": 29478,
+            "character": 813,
+            "fixture": 0,
+            "gate": 0,
+            "total": 69079
+          },
+          {
+            "cardId": 208,
+            "base": 39098,
+            "area": 30495,
+            "character": 859,
+            "fixture": 0,
+            "gate": 0,
+            "total": 70452
+          },
+          {
+            "cardId": 207,
+            "base": 38789,
+            "area": 31029,
+            "character": 890,
+            "fixture": 0,
+            "gate": 0,
+            "total": 70708
+          },
+          {
+            "cardId": 579,
+            "base": 33687,
+            "area": 23580,
+            "character": 807,
+            "fixture": 0,
+            "gate": 0,
+            "total": 58074
+          }
+        ]
+      }
+    },
+    {
+      "id": "five_same_unit_mixed_attribute",
+      "description": "五人同Leo/need、属性不同，只组合道具翻倍。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "team",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 109,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 155,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 207,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 110,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 2,
+                "skill": 1,
+                "story1": true,
+                "story2": false,
+                "canvas": false
+              }
+            }
+          ],
+          "areas": {
+            "current": {
+              "31": 10,
+              "32": 10,
+              "46": 10,
+              "47": 10,
+              "48": 10,
+              "49": 10,
+              "54": 10,
+              "55": 10
+            },
+            "target": {
+              "31": 10,
+              "32": 10,
+              "46": 10,
+              "47": 10,
+              "48": 10,
+              "49": 10,
+              "54": 10,
+              "55": 10
+            }
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 168466,
+        "area": 47161,
+        "character": 161,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 215788,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 33695,
+            "area": 10107,
+            "character": 32,
+            "fixture": 0,
+            "gate": 0,
+            "total": 43834
+          },
+          {
+            "cardId": 109,
+            "base": 33698,
+            "area": 10107,
+            "character": 32,
+            "fixture": 0,
+            "gate": 0,
+            "total": 43837
+          },
+          {
+            "cardId": 155,
+            "base": 33691,
+            "area": 6736,
+            "character": 33,
+            "fixture": 0,
+            "gate": 0,
+            "total": 40460
+          },
+          {
+            "cardId": 207,
+            "base": 33689,
+            "area": 10105,
+            "character": 32,
+            "fixture": 0,
+            "gate": 0,
+            "total": 43826
+          },
+          {
+            "cardId": 110,
+            "base": 33693,
+            "area": 10106,
+            "character": 32,
+            "fixture": 0,
+            "gate": 0,
+            "total": 43831
+          }
+        ]
+      }
+    },
+    {
+      "id": "five_same_attribute_mixed_unit",
+      "description": "五人cool属性但分属五个组合，只属性道具翻倍。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "team",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 290,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 423,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 135,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 232,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 115,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            }
+          ],
+          "areas": {
+            "current": {
+              "31": 9,
+              "33": 9,
+              "35": 9,
+              "37": 9,
+              "39": 9,
+              "46": 9,
+              "47": 9
+            },
+            "target": {
+              "31": 9,
+              "33": 9,
+              "35": 9,
+              "37": 9,
+              "39": 9,
+              "46": 9,
+              "47": 9
+            }
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 159323,
+        "area": 35841,
+        "character": 150,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 195314,
+        "cards": [
+          {
+            "cardId": 290,
+            "base": 31743,
+            "area": 7141,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 38914
+          },
+          {
+            "cardId": 423,
+            "base": 32045,
+            "area": 7209,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39284
+          },
+          {
+            "cardId": 135,
+            "base": 32045,
+            "area": 7209,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39284
+          },
+          {
+            "cardId": 232,
+            "base": 31746,
+            "area": 7141,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 38917
+          },
+          {
+            "cardId": 115,
+            "base": 31744,
+            "area": 7141,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 38915
+          }
+        ]
+      }
+    },
+    {
+      "id": "virtual_singer_choose_higher_unit",
+      "description": "带MMJ应援的初音同时属于piapro；当piapro道具等级较高时，应按更高的一组计算，不能无条件锁应援组。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 88,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {
+              "33": 1,
+              "34": 1,
+              "41": 20,
+              "42": 20,
+              "43": 20,
+              "44": 20,
+              "45": 20
+            },
+            "target": {
+              "33": 1,
+              "34": 1,
+              "41": 20,
+              "42": 20,
+              "43": 20,
+              "44": 20,
+              "45": 20
+            }
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38796,
+        "area": 7759,
+        "character": 37,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 46592,
+        "cards": [
+          {
+            "cardId": 88,
+            "base": 38796,
+            "area": 7759,
+            "character": 37,
+            "fixture": 0,
+            "gate": 0,
+            "total": 46592
+          }
+        ]
+      }
+    },
+    {
+      "id": "five_virtual_singers",
+      "description": "五位虚拟歌手虽然应援组各异，piapro人数为5，VS组合道具使用全员倍率。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "team",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 88,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 92,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 96,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 110,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 146,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            }
+          ],
+          "areas": {
+            "current": {
+              "31": 5,
+              "33": 5,
+              "35": 5,
+              "37": 5,
+              "39": 5,
+              "41": 12,
+              "42": 12,
+              "43": 12,
+              "44": 12,
+              "45": 12
+            },
+            "target": {
+              "31": 5,
+              "33": 5,
+              "35": 5,
+              "37": 5,
+              "39": 5,
+              "41": 12,
+              "42": 12,
+              "43": 12,
+              "44": 12,
+              "45": 12
+            }
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 158715,
+        "area": 38084,
+        "character": 150,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 196949,
+        "cards": [
+          {
+            "cardId": 88,
+            "base": 31746,
+            "area": 7617,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39393
+          },
+          {
+            "cardId": 92,
+            "base": 31733,
+            "area": 7614,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39377
+          },
+          {
+            "cardId": 96,
+            "base": 31747,
+            "area": 7618,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39395
+          },
+          {
+            "cardId": 110,
+            "base": 31743,
+            "area": 7617,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39390
+          },
+          {
+            "cardId": 146,
+            "base": 31746,
+            "area": 7618,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 39394
+          }
+        ]
+      }
+    },
+    {
+      "id": "miku_all_five_personal_items",
+      "description": "初音五个世界的专属道具均匹配同一角色，应逐件累加而非只取当前应援世界一件。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 88,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {
+              "21": 20,
+              "22": 17,
+              "23": 13,
+              "24": 9,
+              "25": 3
+            },
+            "target": {
+              "21": 20,
+              "22": 17,
+              "23": 13,
+              "24": 9,
+              "25": 3
+            }
+          },
+          "ranks": {
+            "current": {
+              "21": 43
+            },
+            "target": {
+              "21": 43
+            }
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38796,
+        "area": 9620,
+        "character": 1667,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 50083,
+        "cards": [
+          {
+            "cardId": 88,
+            "base": 38796,
+            "area": 9620,
+            "character": 1667,
+            "fixture": 0,
+            "gate": 0,
+            "total": 50083
+          }
+        ]
+      }
+    },
+    {
+      "id": "original_miku_gate_max",
+      "description": "无应援组初音按五扇大门中的最高加成计算。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 81,
+              "current": {
+                "level": 20,
+                "trained": false,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 20,
+                "trained": false,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {
+              "1": 40,
+              "2": 2,
+              "3": 3,
+              "4": 4,
+              "5": 5
+            },
+            "target": {
+              "1": 40,
+              "2": 2,
+              "3": 3,
+              "4": 4,
+              "5": 5
+            }
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 9526,
+        "area": 0,
+        "character": 9,
+        "fixture": 0,
+        "gate": 381,
+        "honor": 0,
+        "total": 9916,
+        "cards": [
+          {
+            "cardId": 81,
+            "base": 9526,
+            "area": 0,
+            "character": 9,
+            "fixture": 0,
+            "gate": 381,
+            "total": 9916
+          }
+        ]
+      }
+    },
+    {
+      "id": "supported_miku_gate_only_support",
+      "description": "有MMJ应援初音只匹配MMJ大门；其他团更高的大门不应代入。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 88,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {
+              "1": 40,
+              "2": 2,
+              "3": 35,
+              "4": 30,
+              "5": 25
+            },
+            "target": {
+              "1": 40,
+              "2": 2,
+              "3": 35,
+              "4": 30,
+              "5": 25
+            }
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38796,
+        "area": 0,
+        "character": 37,
+        "fixture": 0,
+        "gate": 77,
+        "honor": 0,
+        "total": 38910,
+        "cards": [
+          {
+            "cardId": 88,
+            "base": 38796,
+            "area": 0,
+            "character": 37,
+            "fixture": 0,
+            "gate": 77,
+            "total": 38910
+          }
+        ]
+      }
+    },
+    {
+      "id": "furniture_0_1_percent_unit",
+      "description": "家具数值17表示1.7%，以总base为基础，和角色比例取整路径不同。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {
+              "1": 3,
+              "31": 3,
+              "48": 3
+            },
+            "target": {
+              "1": 3,
+              "31": 3,
+              "48": 3
+            }
+          },
+          "ranks": {
+            "current": {
+              "1": 17
+            },
+            "target": {
+              "1": 17
+            }
+          },
+          "gates": {
+            "current": {
+              "1": 7
+            },
+            "target": {
+              "1": 7
+            }
+          },
+          "fixtures": {
+            "current": {
+              "1": 17
+            },
+            "target": {
+              "1": 17
+            }
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38795,
+        "area": 3490,
+        "character": 659,
+        "fixture": 659,
+        "gate": 271,
+        "honor": 0,
+        "total": 43874,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 38795,
+            "area": 3490,
+            "character": 659,
+            "fixture": 659,
+            "gate": 271,
+            "total": 43874
+          }
+        ]
+      }
+    },
+    {
+      "id": "furniture_cap",
+      "description": "输入超上限的家具数值175，按国服 bonusRateLimit=100，即10%封顶。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {
+              "1": 175
+            },
+            "target": {
+              "1": 175
+            }
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38795,
+        "area": 0,
+        "character": 38,
+        "fixture": 3879,
+        "gate": 0,
+        "honor": 0,
+        "total": 42712,
+        "cards": [
+          {
+            "cardId": 4,
+            "base": 38795,
+            "area": 0,
+            "character": 38,
+            "fixture": 3879,
+            "gate": 0,
+            "total": 42712
+          }
+        ]
+      },
+      "normalization": "上游getCardPower的mysekaiFixtureLimit传入国服主表bonusRateLimit=100。"
+    },
+    {
+      "id": "team_honor_added_once",
+      "description": "两枚真实称号的固定加成仅加在整队一次，不能每张卡重复加。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "team",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 290,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 209,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 208,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 207,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 579,
+              "current": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            }
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 20,
+            "target": 20
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 155705,
+        "area": 0,
+        "character": 149,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 20,
+        "total": 155874,
+        "cards": [
+          {
+            "cardId": 290,
+            "base": 31743,
+            "area": 0,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 31773
+          },
+          {
+            "cardId": 209,
+            "base": 31738,
+            "area": 0,
+            "character": 31,
+            "fixture": 0,
+            "gate": 0,
+            "total": 31769
+          },
+          {
+            "cardId": 208,
+            "base": 32048,
+            "area": 0,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 32078
+          },
+          {
+            "cardId": 207,
+            "base": 31739,
+            "area": 0,
+            "character": 30,
+            "fixture": 0,
+            "gate": 0,
+            "total": 31769
+          },
+          {
+            "cardId": 579,
+            "base": 28437,
+            "area": 0,
+            "character": 28,
+            "fixture": 0,
+            "gate": 0,
+            "total": 28465
+          }
+        ]
+      },
+      "userHonors": [
+        {
+          "honorId": 105,
+          "level": 1
+        },
+        {
+          "honorId": 106,
+          "level": 1
+        }
+      ]
+    },
+    {
+      "id": "canvas_then_all_percentages",
+      "description": "包含画布后再叠加区域、角色、家具、大门；检查所有百分比基础一致。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 116,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {
+              "21": 15,
+              "22": 15,
+              "23": 15,
+              "24": 15,
+              "25": 15,
+              "39": 15,
+              "40": 15,
+              "46": 15,
+              "47": 15
+            },
+            "target": {
+              "21": 15,
+              "22": 15,
+              "23": 15,
+              "24": 15,
+              "25": 15,
+              "39": 15,
+              "40": 15,
+              "46": 15,
+              "47": 15
+            }
+          },
+          "ranks": {
+            "current": {
+              "21": 67
+            },
+            "target": {
+              "21": 67
+            }
+          },
+          "gates": {
+            "current": {
+              "5": 31
+            },
+            "target": {
+              "5": 31
+            }
+          },
+          "fixtures": {
+            "current": {
+              "21": 57
+            },
+            "target": {
+              "21": 57
+            }
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 38789,
+        "area": 23272,
+        "character": 1937,
+        "fixture": 2210,
+        "gate": 1202,
+        "honor": 0,
+        "total": 67410,
+        "cards": [
+          {
+            "cardId": 116,
+            "base": 38789,
+            "area": 23272,
+            "character": 1937,
+            "fixture": 2210,
+            "gate": 1202,
+            "total": 67410
+          }
+        ]
+      }
+    },
+    {
+      "id": "float32_character_boundary",
+      "description": "真实国服数值中的float32边界；直接用double乘百分比会差1。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 1,
+              "current": {
+                "level": 4,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 4,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {
+              "1": 25
+            },
+            "target": {
+              "1": 25
+            }
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        },
+        "side": "current"
+      },
+      "expected": {
+        "base": 3747,
+        "area": 0,
+        "character": 91,
+        "fixture": 0,
+        "gate": 0,
+        "honor": 0,
+        "total": 3838,
+        "cards": [
+          {
+            "cardId": 1,
+            "base": 3747,
+            "area": 0,
+            "character": 91,
+            "fixture": 0,
+            "gate": 0,
+            "total": 3838
+          }
+        ]
+      },
+      "diagnostic": {
+        "doubleOnlyCharacterBonus": 92,
+        "canonicalFloat32CharacterBonus": 91
+      }
+    }
+  ],
+  "materialCases": [
+    {
+      "id": "four_star_training_only",
+      "description": "四星同等级50，只改变特训状态。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 50,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "material:14",
+          "quantity": 100,
+          "owned": 0,
+          "shortage": 100
+        },
+        {
+          "key": "material:6",
+          "quantity": 200,
+          "owned": 0,
+          "shortage": 200
+        }
+      ],
+      "rationale": "cards[id=4].specialTrainingCosts 每种材料相加。"
+    },
+    {
+      "id": "four_star_master5_fragments",
+      "description": "四星专家0→5，选择通用心愿碎片支付。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "material:15",
+          "quantity": 10000,
+          "owned": 0,
+          "shortage": 10000
+        }
+      ],
+      "rationale": "masterLessons 每级选择材料15的一个通用支付分支；并非所有costs同时支付。"
+    },
+    {
+      "id": "four_star_master5_crystals",
+      "description": "相同专家升级，改选心愿结晶。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "crystal",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "material:16",
+          "quantity": 5,
+          "owned": 0,
+          "shortage": 5
+        }
+      ],
+      "rationale": "与碎片方案互斥，每级材料16×1。"
+    },
+    {
+      "id": "canvas_small",
+      "description": "小号装饰画从未制作→已制作。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "mysekai_material:14",
+          "quantity": 2,
+          "owned": 0,
+          "shortage": 2
+        },
+        {
+          "key": "mysekai_material:3",
+          "quantity": 2,
+          "owned": 0,
+          "shortage": 2
+        }
+      ],
+      "rationale": "mysekaiBlueprintMysekaiMaterialCosts 的配方439，实际消耗mysekai_material:3和14。"
+    },
+    {
+      "id": "canvas_large",
+      "description": "改用大号装饰画材料；综合力开关保持相同。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 441
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "mysekai_material:14",
+          "quantity": 4,
+          "owned": 0,
+          "shortage": 4
+        },
+        {
+          "key": "mysekai_material:3",
+          "quantity": 4,
+          "owned": 0,
+          "shortage": 4
+        }
+      ],
+      "rationale": "大号配方441材料各4，而非各2。"
+    },
+    {
+      "id": "shared_area_once_with_inventory",
+      "description": "五张卡共用同一件团体道具，Lv1→3成本只计算一次，再减库存。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "team",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 290,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 209,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 208,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 207,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            {
+              "cardId": 579,
+              "current": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 50,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            }
+          ],
+          "areas": {
+            "current": {
+              "31": 1
+            },
+            "target": {
+              "31": 3
+            }
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {
+            "coin:0": 30000,
+            "material:2": 100
+          },
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "coin:0",
+          "quantity": 275000,
+          "owned": 30000,
+          "shortage": 245000
+        },
+        {
+          "key": "material:5",
+          "quantity": 1800,
+          "owned": 0,
+          "shortage": 1800
+        }
+      ],
+      "rationale": "areaItemCosts 仅累加第2、3级，不乘受益卡牌数量。"
+    },
+    {
+      "id": "gate_level1_to3",
+      "description": "门升级Lv1→3，按两个逐级材料组累加。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {
+              "1": 1
+            },
+            "target": {
+              "1": 3
+            }
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "mysekai_material:1",
+          "quantity": 5,
+          "owned": 0,
+          "shortage": 5
+        },
+        {
+          "key": "mysekai_material:13",
+          "quantity": 1,
+          "owned": 0,
+          "shortage": 1
+        },
+        {
+          "key": "mysekai_material:23",
+          "quantity": 1,
+          "owned": 0,
+          "shortage": 1
+        },
+        {
+          "key": "mysekai_material:35",
+          "quantity": 2,
+          "owned": 0,
+          "shortage": 2
+        },
+        {
+          "key": "mysekai_material:36",
+          "quantity": 2,
+          "owned": 0,
+          "shortage": 2
+        },
+        {
+          "key": "mysekai_material:37",
+          "quantity": 2,
+          "owned": 0,
+          "shortage": 2
+        },
+        {
+          "key": "mysekai_material:38",
+          "quantity": 2,
+          "owned": 0,
+          "shortage": 2
+        },
+        {
+          "key": "mysekai_material:6",
+          "quantity": 30,
+          "owned": 0,
+          "shortage": 30
+        },
+        {
+          "key": "mysekai_material:9",
+          "quantity": 1,
+          "owned": 0,
+          "shortage": 1
+        }
+      ],
+      "rationale": "mysekaiGateLevels 的 materialGroupId 连接 mysekaiGateMaterialGroups。"
+    },
+    {
+      "id": "stories_both",
+      "description": "同一四星卡前后篇均未读→均已读。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": true,
+                "story2": true,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "material:1",
+          "quantity": 5000,
+          "owned": 0,
+          "shortage": 5000
+        },
+        {
+          "key": "material:14",
+          "quantity": 120,
+          "owned": 0,
+          "shortage": 120
+        },
+        {
+          "key": "material:6",
+          "quantity": 1200,
+          "owned": 0,
+          "shortage": 1200
+        }
+      ],
+      "rationale": "cardEpisodes cardId=4 两篇costs相加，培养等级未变化。"
+    },
+    {
+      "id": "practice_ticket_round_up",
+      "description": "一星Lv1→20，使用中级练习乐谱，向上取整以覆盖经验。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 1,
+              "current": {
+                "level": 1,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 20,
+                "trained": false,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "practice_ticket:2",
+          "quantity": 15,
+          "owned": 0,
+          "shortage": 15
+        }
+      ],
+      "rationale": "levels(card,20).totalExp=146400；中级乐谱每张10000经验。"
+    },
+    {
+      "id": "skill_ticket",
+      "description": "四星技能Lv1→4，使用高级技能乐谱。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 4,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "skill_practice_ticket:3",
+          "quantity": 40,
+          "owned": 0,
+          "shortage": 40
+        }
+      ],
+      "rationale": "levels(card_skill_4,4).totalExp=10000，技能升级乐谱高级每张250。"
+    },
+    {
+      "id": "skill_fragments",
+      "description": "同样技能升级选择心愿碎片。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 1,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 0,
+                "skill": 4,
+                "story1": false,
+                "story2": false,
+                "canvas": false
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "fragment",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [
+        {
+          "key": "material:15",
+          "quantity": 10000,
+          "owned": 0,
+          "shortage": 10000
+        }
+      ],
+      "rationale": "cardSkillCosts 显示材料15每个提供1技能EXP；所需10000EXP。"
+    },
+    {
+      "id": "unchanged_state_zero_cost",
+      "description": "当前状态和目标完全相同，无材料消耗。",
+      "input": {
+        "plan": {
+          "schema": "yoisaki-plan",
+          "version": 1,
+          "name": "Independent upstream golden",
+          "mode": "single",
+          "activeSlot": 0,
+          "slots": [
+            {
+              "cardId": 4,
+              "current": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              },
+              "target": {
+                "level": 60,
+                "trained": true,
+                "master": 5,
+                "skill": 4,
+                "story1": true,
+                "story2": true,
+                "canvas": true
+              }
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "areas": {
+            "current": {},
+            "target": {}
+          },
+          "ranks": {
+            "current": {},
+            "target": {}
+          },
+          "gates": {
+            "current": {},
+            "target": {}
+          },
+          "fixtures": {
+            "current": {},
+            "target": {}
+          },
+          "honors": {
+            "current": 0,
+            "target": 0
+          },
+          "inventory": {},
+          "policy": {
+            "practiceTicket": 2,
+            "skillPayment": "ticket",
+            "skillTicket": 3,
+            "masterPayment": "fragment",
+            "canvasRecipe": 439
+          }
+        }
+      },
+      "expectedResources": [],
+      "rationale": "所有逐级差值和布尔状态差均为0。"
+    }
+  ]
+}
