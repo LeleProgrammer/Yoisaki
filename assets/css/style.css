@@ -11,3 +11,6 @@
 .song-row>span{min-width:0;flex:1}.song-row strong{max-width:100%}.song-list{overflow-x:hidden}
 
 .resource-table .resource-source{display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-height:3em}
+
+/* Keep pointer targets stable while the chart redraws. */
+.play-btn svg{pointer-events:none}
